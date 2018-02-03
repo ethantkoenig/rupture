@@ -12,8 +12,8 @@ import (
 )
 
 // ShardedIndex an index that is built onto of multiple underlying bleve
-// indices (i.e. shards). ShardedIndex extends the bleve.Index interface,
-// although like bleve's index aliases, some methods may not be supported.
+// indices (i.e. shards). Similar to bleve's index aliases, some methods may
+// not be supported.
 type ShardedIndex interface {
 	bleve.Index
 	shards() []bleve.Index

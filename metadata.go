@@ -13,7 +13,7 @@ func indexMetadataPath(dir string) string {
 	return filepath.Join(dir, metaFilename)
 }
 
-// IndexMetadata metadata about a bleve index
+// IndexMetadata contains metadata about a bleve index.
 type IndexMetadata struct {
 	// The version of the data in the index. This can be useful for tracking
 	// schema changes or data migrations.
@@ -48,9 +48,9 @@ func writeJSON(path string, meta interface{}) error {
 	return ioutil.WriteFile(path, metaBytes, 0666)
 }
 
-// ReadIndexMetadata returns the index metadata for the index at the specified
-// path. If no such index metadata exists, an empty metadata and a nil error
-// are returned.
+// ReadIndexMetadata returns the metadata for the index at the specified path.
+// If no such index metadata exists, an empty metadata and a nil error are
+// returned.
 func ReadIndexMetadata(path string) (*IndexMetadata, error) {
 	meta := &IndexMetadata{}
 	metaPath := indexMetadataPath(path)
@@ -62,8 +62,7 @@ func ReadIndexMetadata(path string) (*IndexMetadata, error) {
 	return meta, readJSON(metaPath, meta)
 }
 
-// WriteIndexMetadata writes the specified metadata for the index of the
-// specified path.
+// WriteIndexMetadata writes metadata for the index at the specified path.
 func WriteIndexMetadata(path string, meta *IndexMetadata) error {
 	return writeJSON(indexMetadataPath(path), meta)
 }
