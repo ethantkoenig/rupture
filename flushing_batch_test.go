@@ -19,7 +19,7 @@ func TestFlushingBatch(t *testing.T) {
 
 	batch := NewFlushingBatch(index, 4)
 	addVehicles(t, batch.Index)
-	batch.Flush()
+	assert.NoError(t, batch.Flush())
 
 	result, err := index.Search(vehicleSearchRequest())
 	assert.NoError(t, err)
