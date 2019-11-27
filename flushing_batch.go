@@ -62,6 +62,7 @@ func (b *singleIndexFlushingBatch) Flush() error {
 	if err != nil {
 		return err
 	}
-	b.batch.Reset()
+	// WARN: start a new flush and dont Reset it because it may result in a datarace
+	b.batch = b.index.NewBatch()
 	return nil
 }
