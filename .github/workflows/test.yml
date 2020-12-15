@@ -35,5 +35,7 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Vendor Dependency
+        run: go mod vendor
       - name: Test
-        run: go test -race
+        run: GO111MODULE=on go test -race
