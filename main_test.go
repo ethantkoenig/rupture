@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/v2"
 	"github.com/stretchr/testify/assert"
 )
 
